@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/farazkayan/nexus-workflow-manager/releases/download/v1.0/nexus.ico" width="120" height="120" alt="Nexus Logo"/>
+  <img src="https://raw.githubusercontent.com/farazkayan/nexus-workflow-manager/main/logo.svg" width="120" height="120" alt="Nexus Logo"/>
 
   <h1>Nexus</h1>
   <p>A one-click workflow launcher for Windows.<br/>Group your apps and websites into workflows and launch them all instantly.</p>
