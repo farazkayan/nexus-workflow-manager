@@ -979,13 +979,3 @@ if __name__ == "__main__":
     window.show()
     sys.exit(app.exec())
 
-# TO BUILD EXE:
-# pip install pyinstaller platformdirs
-# pyinstaller --onefile --windowed --name "Nexus" jarvis_control_center.py
-#
-# The --windowed flag suppresses the console window.
-# The --onefile flag bundles everything into a single EXE.
-# Data files (workflows.json, settings.json) are stored in:
-#   Windows: %APPDATA%\FarazKayanHaque\Nexus\
-#   macOS:   ~/Library/Application Support/Nexus/
-#   Linux:   ~/.local/share/Nexus/
