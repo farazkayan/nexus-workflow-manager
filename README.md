@@ -10,6 +10,8 @@
   &nbsp;
   <img src="https://img.shields.io/badge/Platform-Windows-6D63F5?style=for-the-badge" alt="Windows"/>
   &nbsp;
+  <img src="https://img.shields.io/badge/Version-1.2-6D63F5?style=for-the-badge" alt="Version"/>
+  &nbsp;
   <img src="https://img.shields.io/badge/Python-3.11-6D63F5?style=for-the-badge" alt="Python"/>
 
 </div>
@@ -28,7 +30,10 @@ No subscriptions. No account. No bloat. Just install and go.
 
 - **One-click launch** — open all your apps and URLs in a single click
 - **Workflow cards** — create, name, and organise as many workflows as you want
-- **Drag to reorder** — rearrange cards by dragging them
+- **Emoji icons** — pick an emoji to identify each workflow at a glance
+- **Pin workflows** — pin important workflows to always appear first
+- **Drag to reorder** — rearrange cards and items inside workflows
+- **Compact mode** — toggle a slim view to see more workflows at once
 - **System tray** — runs quietly in the tray, launch workflows without opening the window
 - **Dark & light theme** — switch in settings
 - **Search** — find workflows instantly as you type
@@ -79,16 +84,18 @@ pip install PySide6 platformdirs pyinstaller
 python nexus.py
 
 # Build EXE
-pyinstaller --onefile --windowed --name "Nexus" --icon="nexus.ico" --add-data "nexus.ico;." nexus.py
+pyinstaller --onefile --windowed --name "Nexus" --icon="nexus.ico" nexus.py
 ```
 
 ---
 
 ## Roadmap
 
+- [x] Emoji icon per workflow card
+- [x] Pin workflows to top
+- [x] Compact view mode
 - [ ] Scheduled workflows — auto-launch at a set time
 - [ ] Categories / folders for cards
-- [ ] Custom emoji icon per workflow card
 - [ ] Auto-updater
 
 ---

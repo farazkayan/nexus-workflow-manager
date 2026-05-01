@@ -1,7 +1,7 @@
 [Setup]
 AppName=Nexus
 AppVerName=Nexus
-AppVersion=1.0
+AppVersion=1.2
 AppPublisher=Faraz Kayan Haque
 DefaultDirName={autopf}\Nexus
 DefaultGroupName=Nexus
