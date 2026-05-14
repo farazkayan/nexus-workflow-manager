@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Add to Nexus</title>
+  <style>
+    :root {
+      --bg: #0D0D10; --surface: #111116; --surface2: #18181B;
+      --border: #1E1E24; --border2: #27272A;
+      --accent: #6366F1; --accent-hover: #4F46E5;
+      --text: #FAFAFA; --text2: #A1A1AA; --text3: #52525B;
+      --success: #22C55E; --error: #EF4444;
+    }
+    body {
+      margin: 0; padding: 0; width: 100%; height: 100vh;
+      background: var(--bg); color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      display: flex; flex-direction: column; overflow-x: hidden;
+    }
+    
+    /* HEADER */
+    .header {
+      height: 44px; background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; padding: 0 16px; flex-shrink: 0;
+    }
+    .header-icon {
+      width: 20px; height: 20px; background: var(--accent);
+      border-radius: 4px; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 13px; color: white; margin-right: 8px;
+    }
+    .header-title { font-size: 13px; font-weight: 600; color: var(--text); }
+
+    /* ERROR STATE */
+    .error-state {
+      display: none; flex-direction: column; align-items: center;
+      padding: 40px 20px; text-align: center;
+      flex: 1; justify-content: center;
+    }
+    .error-icon { font-size: 28px; margin-bottom: 12px; }
+    .error-title-text { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .error-sub { font-size: 12px; color: var(--text2); margin-bottom: 16px; }
+    .btn-close {
+      background: transparent; border: 1px solid var(--border2);
+      color: var(--text); padding: 6px 16px; border-radius: 6px; cursor: pointer;
+    }
+    .btn-close:hover { background: var(--surface2); }
+
+    /* CONTENT */
+    .content-area {
+      display: flex; flex-direction: column; flex: 1; overflow: hidden;
+    }
+    .info-box {
+      padding: 16px; border-bottom: 1px solid var(--border); background: var(--surface);
+    }
+    .info-title { font-size: 11px; font-weight: 600; color: var(--text3); margin-bottom: 4px; letter-spacing: 0.05em; }
+    .url-text { font-size: 13px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .search-container { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+    .search-input {
+      width: 100%; box-sizing: border-box; background: var(--surface2);
+      border: 1px solid var(--border2); border-radius: 6px; padding: 8px 12px;
+      color: var(--text); font-size: 13px; outline: none; transition: border-color 150ms;
+    }
+    .search-input:focus { border-color: var(--accent); }
+
+    .list { flex: 1; overflow-y: auto; padding-bottom: 12px; padding-top: 8px; }
+    .list::-webkit-scrollbar { width: 6px; }
+    .list::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+    
+    .card {
+      height: 48px; border-radius: 8px; background: var(--surface);
+      border: 1px solid var(--border); margin: 0 12px 6px;
+      display: flex; align-items: center; cursor: pointer; transition: all 150ms;
+    }
+    .card:hover { border-color: var(--accent); background: var(--surface2); }
+    .card.added { border-color: var(--success); background: rgba(34, 197, 94, 0.1); pointer-events: none; }
+    .c-emoji { font-size: 18px; padding-left: 12px; font-family: "Segoe UI Emoji", sans-serif; }
+    .c-name { font-size: 13px; font-weight: 500; flex: 1; padding-left: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text); }
+    
+    .empty-state { text-align: center; padding: 20px; color: var(--text3); font-size: 13px; display: none; }
+
+    .footer {
+      padding: 12px 16px; border-top: 1px solid var(--border); background: var(--surface);
+      display: flex; justify-content: flex-end;
+    }
+    .btn-cancel {
+      background: transparent; border: none; color: var(--text2);
+      font-size: 13px; font-weight: 500; cursor: pointer;
+    }
+    .btn-cancel:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-icon"><img src="data:image/png;base64,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" style="width:100%;height:100%;border-radius:4px;object-fit:cover;display:block;"></div>
+    <div class="header-title">Add to Nexus</div>
+  </div>
+
+  <div class="error-state" id="error-state">
+    <div class="error-icon">🔌</div>
+    <div class="error-title-text">Nexus isn't running</div>
+    <div class="error-sub">Open Nexus from your desktop to connect.</div>
+    <button class="btn-close" id="btn-close">Close</button>
+  </div>
+
+  <div class="content-area" id="content-area">
+    <div class="info-box">
+      <div class="info-title">ADDING LINK</div>
+      <div class="url-text" id="url-display"></div>
+    </div>
+    <div class="search-container">
+      <input type="text" id="search-input" class="search-input" placeholder="Search workflows...">
+    </div>
+    <div class="list" id="list">
+       <div class="empty-state" id="empty-state">No workflows found.</div>
+    </div>
+    <div class="footer">
+      <button class="btn-cancel" id="btn-cancel">Cancel</button>
+    </div>
+  </div>
+
+  <script src="workflow_picker.js"></script>
+</body>
+</html>

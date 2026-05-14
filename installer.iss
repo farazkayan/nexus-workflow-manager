@@ -1,12 +1,11 @@
 [Setup]
 AppName=Nexus
-AppVerName=Nexus
-AppVersion=1.2
+AppVersion=2.0
 AppPublisher=Faraz Kayan Haque
 DefaultDirName={autopf}\Nexus
 DefaultGroupName=Nexus
 OutputDir=installer_output
-OutputBaseFilename=Nexus_Setup
+OutputBaseFilename=NexusSetup
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -14,7 +13,10 @@ SetupIconFile=nexus.ico
 UninstallDisplayIcon={app}\Nexus.exe
 
 [Files]
+; The main app
 Source: "dist\Nexus.exe"; DestDir: "{app}"; Flags: ignoreversion
+; The icon for the taskbar
+Source: "nexus.ico"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\Nexus"; Filename: "{app}\Nexus.exe"; IconFilename: "{app}\Nexus.exe"
