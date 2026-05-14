@@ -123,7 +123,10 @@ Profiles let you switch between entire sets of workflows instantly. Switch via t
 ## Built with
 
 - [Python 3.11](https://python.org)
-- [PySide6](https://doc.qt.io/qtforpython/) — UI framework
+- [PySide6](https://doc.qt.io/qtforpython/) — UI framework and system tray
+- [QWebEngineView](https://doc.qt.io/qt-6/qwebengineview.html) — renders the entire UI as an embedded web app
+- [QWebChannel](https://doc.qt.io/qt-6/qwebchannel.html) — bridges the Python backend to the JavaScript frontend
+- HTML / CSS / JavaScript — the full UI is built as a self-contained web frontend
 - [platformdirs](https://github.com/platformdirs/platformdirs) — cross-platform data paths
 - [PyInstaller](https://pyinstaller.org) — packaging
 - [Inno Setup](https://jrsoftware.org/isinfo.php) — installer
